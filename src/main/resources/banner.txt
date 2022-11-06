@@ -1,0 +1,18 @@
+
+ ${AnsiColor.BLUE}$$$$$$$$\ $$$$$$$\   $$$$$$\  $$$$$$$$\ $$$$$$$$\$$$$$$\  $$$$$$\  ${AnsiColor.RED}$$$$$$\ $$$$$$$\  ${AnsiColor.YELLOW}$$$$$$\ $$$$$$$\
+ ${AnsiColor.BLUE}\__$$  __|$$  __$$\ $$  __$$\ $$  _____|$$  _____\_$$  _|$$  __$$\ ${AnsiColor.RED}\_$$  _|$$  __$$\ ${AnsiColor.YELLOW}_______ $$$$$$$\
+ ${AnsiColor.BLUE}   $$ |   $$$$$$$  |$$$$$$$$ |$$$$$\    $$$$$\     $$ |  $$ |      ${AnsiColor.RED}  $$ |  $$ |  $$ |${AnsiColor.YELLOW}_______ $$$$$$$\
+ ${AnsiColor.BLUE}   $$ |   $$  __$$< $$  __$$ |$$  __|   $$  __|    $$ |  $$ |      ${AnsiColor.RED}  $$ |  $$ |  $$ |${AnsiColor.YELLOW}$$$$$$\ $$$$$$$\
+ ${AnsiColor.BLUE}   $$ |   $$ |  $$ |$$ |  $$ |$$ |      $$ |       $$ |  $$ |  $$\ ${AnsiColor.RED}  $$ |  $$ |  $$ |${AnsiColor.YELLOW}$$$$$$\ ________
+ ${AnsiColor.BLUE}   $$ |   $$ |  $$ |$$ |  $$ |$$ |      $$ |     $$$$$$\ \$$$$$$  |${AnsiColor.RED}$$$$$$\ $$$$$$$  |${AnsiColor.YELLOW}$$$$$$\ ________
+ ${AnsiColor.BLUE}   \__|   \__|  \__|\__|  \__|\__|      \__|     \______| \______/ ${AnsiColor.RED}\______|\_______/ ${AnsiColor.YELLOW}$$$$$$\ $$$$$$$\
+
+    ${AnsiColor.GREEN}$$$$$$\$$$$$$\$$$$$$\$$$$$$\$$$$$$\$$$$$$\$$$$$$\$$$$$$\$$$$$$\$$$$$$\$$$$$$\$$$$$$\
+    ${AnsiColor.GREEN}\______\______\______\______\______\______\______\______\______\______\______\_____/
+${AnsiColor.BRIGHT_BLUE}:: TRAFFICID API 🤓  :: Running Spring Boot ${spring-boot.version} ::
+
+
+
+
+
+
