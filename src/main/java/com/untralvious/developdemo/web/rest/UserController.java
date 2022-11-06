@@ -34,6 +34,13 @@ public class UserController {
         super();
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/users1")
+    @ResponseBody
+    public List<User> findUserByEmailAndFirstName(@RequestParam(value = "email", required = false) String email,
+                                             @RequestParam(value = "firstname", required = false) String firstname) {
+        return service.searchUserByEmailAndFirstname(email, firstname);
+    }
+
     @RequestMapping(method = RequestMethod.GET, value = "/users")
     @ResponseBody
     public List<User> search(@RequestParam(value = "search", required = false) String search) {
