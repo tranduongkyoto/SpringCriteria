@@ -1,4 +1,4 @@
-package com.untralvious.developdemo.dao;
+package com.untralvious.developdemo.repository;
 
 
 import com.untralvious.developdemo.domain.User;

@@ -1,7 +1,7 @@
 package com.untralvious.developdemo.web.rest;
 
 import com.untralvious.developdemo.dao.IUserDAO;
-import com.untralvious.developdemo.dao.UserRepository;
+import com.untralvious.developdemo.repository.UserRepository;
 import com.untralvious.developdemo.dao.UserSpecificationsBuilder;
 import com.untralvious.developdemo.domain.User;
 import com.untralvious.developdemo.util.SearchCriteria;
@@ -28,20 +28,20 @@ public class UserController {
     private IUserDAO service;
 
     @Autowired
-    private UserRepository dao;
+    private UserRepository userRepository;
 
     public UserController() {
         super();
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/users1")
+    @RequestMapping(method = RequestMethod.GET, value = "/users-criteria1")
     @ResponseBody
     public List<User> findUserByEmailAndFirstName(@RequestParam(value = "email", required = false) String email,
                                              @RequestParam(value = "firstname", required = false) String firstname) {
         return service.searchUserByEmailAndFirstname(email, firstname);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/users")
+    @RequestMapping(method = RequestMethod.GET, value = "/users-criteria2")
     @ResponseBody
     public List<User> search(@RequestParam(value = "search", required = false) String search) {
         List<SearchCriteria> params = new ArrayList<SearchCriteria>();
@@ -55,9 +55,16 @@ public class UserController {
         return service.searchUser(params);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/users/spec")
+    @RequestMapping(method = RequestMethod.GET, value = "/users/spec1")
     @ResponseBody
-    public List<User> findAllBySpecification(@RequestParam(value = "search") String search) {
+    public List<User> findAllBySpecification1(@RequestParam(value = "email", required = false) String email,
+                                              @RequestParam(value = "firstname", required = false) String firstname) {
+        return service.searchUserWithSpecification(email, firstname);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/users/spec2")
+    @ResponseBody
+    public List<User> findAllBySpecification2(@RequestParam(value = "search") String search) {
         UserSpecificationsBuilder builder = new UserSpecificationsBuilder();
         String operationSetExper = Joiner.on("|")
             .join(SearchOperation.SIMPLE_OPERATION_SET);
@@ -68,31 +75,17 @@ public class UserController {
         }
 
         Specification<User> spec = builder.build();
-        return dao.findAll(spec);
+        return userRepository.findAll(spec);
     }
 
-    @GetMapping(value = "/users/espec")
+    @GetMapping(value = "/users/spec3")
     @ResponseBody
     public List<User> findAllByOrPredicate(@RequestParam(value = "search") String search) {
         Specification<User> spec = resolveSpecification(search);
-        return dao.findAll(spec);
+        return userRepository.findAll(spec);
     }
 
-//    @GetMapping(value = "/users/spec/adv")
-//    @ResponseBody
-//    public List<User> findAllByAdvPredicate(@RequestParam(value = "search") String search) {
-//        Specification<User> spec = resolveSpecificationFromInfixExpr(search);
-//        return dao.findAll(spec);
-//    }
-//
-//    protected Specification<User> resolveSpecificationFromInfixExpr(String searchParameters) {
-//        CriteriaParser parser = new CriteriaParser();
-//        GenericSpecificationsBuilder<User> specBuilder = new GenericSpecificationsBuilder<>();
-//        return specBuilder.build(parser.parse(searchParameters), UserSpecification::new);
-//    }
-
     protected Specification<User> resolveSpecification(String searchParameters) {
-
         UserSpecificationsBuilder builder = new UserSpecificationsBuilder();
         String operationSetExper = Joiner.on("|")
             .join(SearchOperation.SIMPLE_OPERATION_SET);
@@ -110,7 +103,7 @@ public class UserController {
     @ResponseStatus(HttpStatus.CREATED)
     public void create(@RequestBody User resource) {
         Preconditions.checkNotNull(resource);
-        dao.save(resource);
+        userRepository.save(resource);
     }
 
 }

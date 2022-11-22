@@ -11,4 +11,6 @@ public interface IUserDAO {
     void save(User entity);
 
     List<User> searchUserByEmailAndFirstname(String email, String firstname);
+
+    List<User> searchUserWithSpecification(String email, String firstname);
 }
